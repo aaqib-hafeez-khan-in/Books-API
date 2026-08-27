@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books API | Live Showcase</title>
+    <meta name="description" content="A minimalistic high-performance Books API microservice.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="mesh-bg"></div>
+    
+    <header>
+        <div class="brand">
+            <span class="symbol">/</span> Books<span>API</span>
+        </div>
+        <div class="actions">
+            <a href="/swagger-ui/index.html" class="btn-ghost">Documentation</a>
+            <a href="https://github.com/AaqibhafeezKhan/Books-API" target="_blank" class="btn-primary">GitHub</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="api-playground">
+            <div class="playground-header">
+                <div class="type-badge">GET</div>
+                <div class="endpoint">/api/books/search</div>
+            </div>
+            
+            <div class="input-strip">
+                <div class="param-group">
+                    <label>Query</label>
+                    <input type="text" id="searchInput" placeholder="e.g. The Lord of the Rings">
+                </div>
+                <div class="param-group">
+                    <label>Filter</label>
+                    <select id="filterType">
+                        <option value="all">None</option>
+                        <option value="author">Author</option>
+                        <option value="subject">Subject</option>
+                        <option value="isbn">ISBN</option>
+                    </select>
+                </div>
+                <button id="searchBtn" class="btn-execute">Execute Request</button>
+            </div>
+
+            <div class="showcase-grid">
+                <div class="panel">
+                    <div class="panel-label">HTTP Request</div>
+                    <div class="code-block" id="curlCommand">
+<span class="c-keyword">curl</span> -X GET \
+  <span class="c-string">"https://books-api.render.com/api/books/search?query=..."</span>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-label">Response Body</div>
+                    <div class="code-block response-scroll" id="jsonResponse">
+{
+  <span class="c-key">"status"</span>: <span class="c-number">200</span>,
+  <span class="c-key">"message"</span>: <span class="c-string">"Ready to scan the multiverse"</span>
+}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="results" class="minimal-results hidden">
+            <div class="stats-header">
+                <span id="resultCount"></span>
+            </div>
+            <div id="bookGrid" class="mini-grid"></div>
+        </section>
+    </main>
+
+    <div id="loader" class="loader hidden"></div>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: books-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/books/search?query=test
+    envVars:
+      - key: PORT
+        value: 8080
